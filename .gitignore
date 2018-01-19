@@ -1,2 +1,6 @@
-.gitignore
-.idea/inspectionProfiles/
+.idea/
+__pycache__
+.Python
+*.log
+local_settings.py
+

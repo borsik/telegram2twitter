@@ -3,7 +3,7 @@
 
 import re
 import logging
-import config as cfg
+import settings as cfg
 import tweepy
 
 

@@ -1,6 +1,6 @@
 import datetime
 from bot import tweet_post
-import config as cfg
+import settings as cfg
 from telethon import TelegramClient
 import time
 
