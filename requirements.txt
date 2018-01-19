@@ -1,0 +1,3 @@
+python_telegram_bot==9.0.0
+tweepy==3.5.0
+Telethon==0.16.1.4
