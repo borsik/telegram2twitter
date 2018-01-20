@@ -8,7 +8,7 @@ import tweepy
 
 
 from telegram.ext import Updater
-from telegram.ext import MessageHandler
+from telegram.ext import MessageHandler, Filters
 
 # Enable logging
 logging.basicConfig(filename="telegram_bot.log", format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -67,7 +67,7 @@ def main():
     dp = updater.dispatcher
 
     # Add message handler
-    dp.add_handler(MessageHandler(None, tweet_post_update, channel_post_updates=True))
+    dp.add_handler(MessageHandler(Filters.text, tweet_post_update, channel_post_updates=True))
 
     # log all errors
     dp.add_error_handler(error)
