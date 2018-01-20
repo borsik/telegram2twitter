@@ -2,14 +2,16 @@
 
 # Check if gedit is running
 # -x flag only match processes whose name (or command line if -f is
-# specified) exactly match the pattern. 
-while true; do
-    if pgrep -x "telegram2tweeter.py" > /dev/null
+# specified) exactly match the pattern.
+
+check() {
+  pgrep -lf ".[ /]$1( |\$)"
+}
+
+if check "telegram2twitter.py" >/dev/null
     then
-        echo "Running"
+        echo "Bot is running, nothing to do"
     else
-        echo "Run script and sleep"
-        python teletweet.py
-    fi
-    sleep 300
-done
+        echo "Bot is dead, recover"
+        python bot.py &
+fi

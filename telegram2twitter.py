@@ -11,19 +11,10 @@ from telegram.ext import Updater
 from telegram.ext import MessageHandler
 
 # Enable logging
+logging.basicConfig(filename="telegram_bot.log", format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-stream_handler = logging.StreamHandler()
-stream_handler.setLevel(logging.INFO)
-file_handler = logging.FileHandler(__name__)
-file_handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-stream_handler.setFormatter(formatter)
-file_handler.setFormatter(formatter)
-logger.addHandler(stream_handler)
-logger.addHandler(file_handler)
-
 
 def error(bot, update, error):
     """Log Errors caused by Updates."""
@@ -31,8 +22,8 @@ def error(bot, update, error):
 
 
 def make_twitter_api():
-    auth = tweepy.OAuthHandler(cfg.tweeter["consumer_key"], cfg.tweeter["consumer_secret"])
-    auth.set_access_token(cfg.tweeter["access_token"], cfg.tweeter["access_token_secret"])
+    auth = tweepy.OAuthHandler(cfg.twitter["consumer_key"], cfg.twitter["consumer_secret"])
+    auth.set_access_token(cfg.twitter["access_token"], cfg.twitter["access_token_secret"])
     return tweepy.API(auth)
 
 
@@ -49,7 +40,7 @@ def slice_text(text):
 
 
 def tweet_post(id, text, username=None):
-    channel = cfg.tg["channel"]
+    channel = cfg.telegram["channel"]
     twitter_api = make_twitter_api()
     if username is None or username == channel:
         link = "https://telegram.me/%s/%d " % (channel, id)
@@ -70,7 +61,7 @@ def tweet_post_update(bot, update):
 
 def main():
     # Create the EventHandler and pass it your bot's token.
-    updater = Updater(token=cfg.tg["token"])
+    updater = Updater(token=cfg.telegram["token"])
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
