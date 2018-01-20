@@ -3,9 +3,11 @@ from bot import tweet_post
 import settings as cfg
 from telethon import TelegramClient
 import time
+from bot import logger
 
 
 def main():
+    logger.info("Client started")
     client = TelegramClient(cfg.tg['channel'], cfg.tg['api_id'], cfg.tg['api_hash'])
     client.connect()
     delay = cfg.util['delay']
@@ -27,12 +29,13 @@ def main():
     for message in messages:
         if message.date > start_time and str(message.id) not in sended_posts:
             try:
-                #tweet_post(message.id, message.message)
+                tweet_post(message.id, message.message)
                 with open('sended_posts.txt', 'a') as file:
                     file.write(str(message.id) + '\n')
                 time.sleep(delay)
             except AttributeError:
                 print("no attribute")
+    logger.info("Client finished")
 
 if __name__ == '__main__':
     main()
