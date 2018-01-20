@@ -3,4 +3,5 @@ __pycache__
 .Python
 *.log
 local_settings.py
-
+*.session
+sended_posts.txt

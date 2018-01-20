@@ -45,7 +45,7 @@ def slice_text(text):
         if len(text) < 130:
             break
 
-    return text.strip() + "\n\n𝐑𝐞𝐚𝐝 𝐦𝐨𝐫𝐞:"
+    return text.strip() + "\n\nRead more:"
 
 
 def tweet_post(id, text, username=None):
