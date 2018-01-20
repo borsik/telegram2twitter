@@ -5,3 +5,4 @@ __pycache__
 local_settings.py
 *.session
 sended_posts.txt
+__main__

@@ -4,7 +4,7 @@ Simple telegram bot for tweeting channel posts
 
 
 ### Prerequisites
-You'll need a Telegram Bot Token, you can get it by creating bot via @BotFather ([more info here](https://core.telegram.org/bots)).
+You'll need a Telegram Bot Token, you can get it by creating your own telegram bot via @BotFather ([more info here](https://core.telegram.org/bots)). Don't forget to add it to your channel as administrator
 
 Also, setting this up will need an Application-only authentication token from Twitter ([more info here](https://dev.twitter.com/oauth/application-only)). Optionally, you can provide a user access token and secret.
 
@@ -17,8 +17,6 @@ Bear in mind that if you don't have added a mobile phone to your Twitter account
 For client.py you need to obtain api_hash, api_id and phone, more [here](https://my.telegram.org/auth). Don't forget to set start and end dates
 
 
-
-
 ### Running
 
 ```
@@ -27,9 +25,9 @@ For client.py you need to obtain api_hash, api_id and phone, more [here](https:/
 # install requirements
 pip install -r requirements.txt
 
-# fill config.py (see prerequisites)
-# before running bot.py you must add your telegram bot to a channel as administrator
-python bot.py
+# fill settings.py (see prerequisites)
+# before running telegram2twitter you must add your telegram bot to a channel as administrator
+python telegram2twitter.py
 
 # for retrieving old posts (as bot cannot see posts, that published before him)
 python client.py
